@@ -8,6 +8,8 @@ const makeTaskBox = document.querySelector(".make-task")
 const typesOfTask = document.querySelector(".types")
 
 
+window.addEventListener("load", getItemsFromLocalStorage());
+
 addTaskBtn.addEventListener('click', displayNewTaskSettings)
 saveNewTaskBtn.addEventListener('click',saveNewTask)
 taskInput.addEventListener('keypress',function(event) {
@@ -64,20 +66,27 @@ function deleteTask(){
 function saveNewTask(){
     const task = taskInput.value
     const type = selectType()
+    todoList.push(task)
     const newTask = createNewTask(task, type)
-    localStorage.setItem(task, newTask)
+    localStorage.setItem("task", newTask)
     taskInput.value = ""
     makeTaskBox.style.display = "none"
 }
 
 function createNewTask(task, type){
-    let template = `<div><h2 class="todo-item">${task}</h2>
+    let template = `<li><h2 class="todo-item">${task}</h2>
     <h4>${type}</h4>
     <button class="complete-item" onclick="completedTask()">Yes</button>
-    <button class="delete-item" onclick="deleteTask()">X</button>
-    
-    </div>`
+    <button class="delete-item" onclick="deleteTask()">X</button>    
+    </li>`
     listContainer.innerHTML += template
     
+}
+
+function getItemsFromLocalStorage(){
+    const data = localStorage.getItem("task")
+    const tasksFromLocalStorage = data.forEach(task=>{
+        return `<li>${task}</li>`
+    })
 }
 
