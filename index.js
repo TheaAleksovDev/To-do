@@ -6,10 +6,15 @@ const taskInput = document.querySelector(".task-name")
 const saveNewTaskBtn = document.querySelector(".save-btn")
 const makeTaskBox = document.querySelector(".make-task")
 const typesOfTask = document.querySelector(".types")
+const resetBtn = document.querySelector(".reset")
 
 
 window.addEventListener("load", getItemsFromLocalStorage());
 
+resetBtn.addEventListener('click',reset)
+function reset(){
+    localStorage.clear()
+}
 addTaskBtn.addEventListener('click', displayNewTaskSettings)
 saveNewTaskBtn.addEventListener('click',saveNewTask)
 taskInput.addEventListener('keypress',function(event) {
@@ -60,7 +65,6 @@ function deleteTask(){
             }
             console.log("alLl")
         }
-        console.log("whwhw")
 }
 
 function saveNewTask(){
@@ -68,7 +72,7 @@ function saveNewTask(){
     const type = selectType()
     todoList.push(task)
     const newTask = createNewTask(task, type)
-    localStorage.setItem("task", newTask)
+    localStorage.setItem(task,type)
     taskInput.value = ""
     makeTaskBox.style.display = "none"
 }
@@ -83,10 +87,13 @@ function createNewTask(task, type){
     
 }
 
-function getItemsFromLocalStorage(){
-    const data = localStorage.getItem("task")
-    const tasksFromLocalStorage = data.forEach(task=>{
-        return `<li>${task}</li>`
-    })
+function getItemsFromLocalStorage(task){
+    for(var i=0;  i<localStorage.length; i++){
+        var key = localStorage.key(i);
+        console.log(localStorage)
+        var value = localStorage[key];
+        // console.log(key + " => " + value);
+        const newTask = createNewTask(key, value)
+    }
 }
 
