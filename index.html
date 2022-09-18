@@ -10,23 +10,29 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div class="app">
             <h1 class="todo">TO-DO</h1>
-        
         <button class="add-task">Add new task</button>
-        <!-- <button class="reset">reset</button> -->
-        <div class="make-task" style="display: none;">
+        <ul class="container">
+        </ul>
+    </div>
+    <div class="make-task" style="display: none;">
+        <h1>New Task Settings</h1>
+        <div class="settings">
             task name: <input type="text" class="task-name">
             </input>
             task type: <div class="types"></div>
-            <button class="save-btn">save</button>
+    
         </div>
-        <ol class="container">
-        </ol>
+        <button class="save-btn">SAVE</button>
+    
     </div>
     
-    <script src="index.js"></script>
+    <script src="indexx.js"></script>
 </body>
 </html>
